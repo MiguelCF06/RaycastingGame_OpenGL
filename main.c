@@ -224,10 +224,12 @@ void drawRays2D()
 		
 		float lineHeight = (mapSize * 320) / disT;
 		float lineOffset = 160 - lineHeight / 2 + 80;
+		/*
 		if (lineHeight > 320)
 		{
 			lineHeight = 320;
 		}
+		*/
 		glLineWidth(8);
 		glBegin(GL_LINES);
 		glVertex2i(ray * 8 + 530, lineOffset);
