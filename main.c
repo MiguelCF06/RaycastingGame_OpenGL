@@ -10,19 +10,28 @@
 #define DR 0.0174533 // one degree in radians
 
 float playerX, playerY, playerDeltaX, playerDeltaY, playerAngle;
-int mapX = 8, mapY = 8, mapSize = 64;
+int mapX = 16, mapY = 16, mapSize = 64;
 
-int map[] = 
+int map[256];
+
+void readMapFromFile()
 {
-	1,1,1,1,1,1,1,1,
-	1,0,0,0,0,0,0,1,
-	1,0,0,0,0,1,0,1,
-	1,0,1,0,0,0,0,1,
-	1,0,0,0,2,0,0,1,
-	1,0,0,0,0,0,0,1,
-	1,0,0,1,0,0,1,1,
-	1,1,1,1,1,1,1,1,
-};
+	FILE *file1 = fopen("'add here the route of where is the map.txt file'\\map1.txt", "r");
+	int i = 0;
+    int num;
+    
+	if (!file1)
+	{
+		fprintf(stderr, "Could not open file\n");
+	}
+
+    while(fscanf(file1, "%d", &num) > 0)
+	{
+        map[i] = num;
+        i++;
+    }
+	fclose(file1);
+}
 
 void drawMap2D()
 {
@@ -186,10 +195,10 @@ void drawRays2D()
 			rayX = vx;
 			rayY = vy;
 			disT = distanceVertical;
-			glColor3f(0, 0, 0.9);
+			glColor3f(0.9, 0.8, 0.8);
 			if (mv == 2)
 			{
-				glColor3f(0.9, 0, 0);
+				glColor3f(0.9, 0.2, 0.4);
 			}
 		}
 		if (distanceHorizontal < distanceVertical)
@@ -197,17 +206,17 @@ void drawRays2D()
 			rayX = hx;
 			rayY = hy;
 			disT = distanceHorizontal;
-			glColor3f(0, 0, 0.7);
+			glColor3f(0.7, 0.6, 0.6);	// Shadow of 1st wall
 			if (mh == 2)
 			{
-				glColor3f(0.7, 0, 0);
+				glColor3f(0.7, 0.1, 0.2);	// Shadow of 2nd wall
 			}
 		}
-		glLineWidth(4);
-		glBegin(GL_LINES);
-		glVertex2i(playerX, playerY);
-		glVertex2i(rayX, rayY);
-		glEnd();
+		//glLineWidth(4);
+		//glBegin(GL_LINES);
+		//glVertex2i(playerX, playerY);
+		//glVertex2i(rayX, rayY);
+		//glEnd();
 		
 		// Draw the 3D walls
 		float newAngle = playerAngle - rayAngle; // Fix fisheye
@@ -232,8 +241,8 @@ void drawRays2D()
 		*/
 		glLineWidth(8);
 		glBegin(GL_LINES);
-		glVertex2i(ray * 8 + 530, lineOffset);
-		glVertex2i(ray * 8 + 530, lineHeight + lineOffset);
+		glVertex2i(ray * 8 + 235, lineOffset);
+		glVertex2i(ray * 8 + 235, lineHeight + lineOffset);   //235
 		glEnd();
 		
 		rayAngle += DR;
@@ -286,15 +295,16 @@ void movePlayer(unsigned char key, int x, int y)
 void display()
 {
  	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
- 	drawMap2D();
+ 	//drawMap2D();
  	drawRays2D();
- 	drawPlayer();
- 	glutSwapBuffers();
+ 	//drawPlayer();
+ 	glutSwapBuffers(); // If display mode is glut_double put this
+ 	glFlush(); // If display mode is glut_single put this
 }
 
 void init()
 {
-	glClearColor(0.1, 0.9, 0.1, 0.0);
+	glClearColor(0, 0, 0, 0);
 	gluOrtho2D(0, 1024, 512, 0);
 	playerX = 100;
 	playerY = 100;
@@ -303,14 +313,15 @@ void init()
 }
 
 int main(int argc, char** argv)
-{ 
- glutInit(&argc, argv);
- glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
- glutInitWindowSize(1024,512);
- glutCreateWindow("Maze Project");
- init();
- glutDisplayFunc(display);
- glutKeyboardFunc(movePlayer);
- glutMainLoop();
- return 0;
+{
+	readMapFromFile();
+ 	glutInit(&argc, argv);
+ 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+ 	glutInitWindowSize(1024,512);
+ 	glutCreateWindow("Maze Project");
+ 	init();
+ 	glutDisplayFunc(display);
+ 	glutKeyboardFunc(movePlayer);
+ 	glutMainLoop();
+ 	return 0;
 }
