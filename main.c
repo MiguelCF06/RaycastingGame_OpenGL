@@ -304,7 +304,7 @@ void display()
  	//drawMap2D();
  	drawRays2D();
  	//drawPlayer();
- 	glutSwapBuffers(); // If display mode is glut_double put this
+ 	//glutSwapBuffers(); // If display mode is glut_double put this
  	glFlush(); // If display mode is glut_single put this
 }
 
