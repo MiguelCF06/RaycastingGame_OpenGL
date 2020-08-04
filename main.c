@@ -19,12 +19,13 @@ void readMapFromFile()
 {
 	FILE *file1;
 	int i = 0;
-    int num;
+	int num;
     
-    if (mapX == 16 && mapY == 16)
-    	file1 = fopen("'put here the path where is your file'\\map1.txt", "r");
-    else
-    	file1 = fopen("''put here the path where is your file'\\map2.txt", "r");
+	if (mapX == 16 && mapY == 16)
+		file1 = fopen("'put here the path where is your file'\\map1.txt", "r");
+	else
+		file1 = fopen("''put here the path where is your file'\\map2.txt", "r");
+    	
 	if (!file1)
 	{
 		fprintf(stderr, "Could not open file\n");
