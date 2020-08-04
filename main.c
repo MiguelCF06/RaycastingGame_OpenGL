@@ -12,22 +12,29 @@
 float playerX, playerY, playerDeltaX, playerDeltaY, playerAngle;
 int mapX = 16, mapY = 16, mapSize = 64;
 
+
 int map[256];
 
 void readMapFromFile()
 {
-	FILE *file1 = fopen("'add here the route of where is the map.txt file'\\map1.txt", "r");
+	FILE *file1;
 	int i = 0;
-	int num;
+    int num;
     
+    if (mapX == 16 && mapY == 16)
+    	file1 = fopen("'put here the path where is your file'\\map1.txt", "r");
+    else
+    	file1 = fopen("''put here the path where is your file'\\map2.txt", "r");
 	if (!file1)
-		fprintf(stderr, "Could not open file\n");
-
-	while(fscanf(file1, "%d", &num) > 0)
 	{
-		map[i] = num;
-		i++;
+		fprintf(stderr, "Could not open file\n");
 	}
+
+    while(fscanf(file1, "%d", &num) > 0)
+	{
+        map[i] = num;
+        i++;
+    }
 	fclose(file1);
 }
 
@@ -193,10 +200,10 @@ void drawRays2D()
 			rayX = vx;
 			rayY = vy;
 			disT = distanceVertical;
-			glColor3f(0.9, 0.8, 0.8);
+			glColor3f(0.9, 0.8, 0.8);	// First Wall
 			if (mv == 2)
 			{
-				glColor3f(0.9, 0.2, 0.4);
+				glColor3f(0.9, 0.2, 0.4);    // Second wall
 			}
 		}
 		if (distanceHorizontal < distanceVertical)
@@ -210,6 +217,7 @@ void drawRays2D()
 				glColor3f(0.7, 0.1, 0.2);	// Shadow of 2nd wall
 			}
 		}
+
 		//glLineWidth(4);
 		//glBegin(GL_LINES);
 		//glVertex2i(playerX, playerY);
@@ -312,6 +320,21 @@ void init()
 
 int main(int argc, char** argv)
 {
+	int choice = 0;
+	printf("Do you want to play:\n");
+	printf("1) 8x8 maze\n");
+	printf("2) 16x16 maze\n");
+	scanf("%i", &choice);
+	if (choice == 1)
+	{
+		mapX = 8;
+		mapY = 8;
+	}
+	else
+	{
+		mapX = 16;
+		mapY = 16;
+	}
 	readMapFromFile();
  	glutInit(&argc, argv);
  	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
