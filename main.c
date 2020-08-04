@@ -18,18 +18,16 @@ void readMapFromFile()
 {
 	FILE *file1 = fopen("'add here the route of where is the map.txt file'\\map1.txt", "r");
 	int i = 0;
-    int num;
+	int num;
     
 	if (!file1)
-	{
 		fprintf(stderr, "Could not open file\n");
-	}
 
-    while(fscanf(file1, "%d", &num) > 0)
+	while(fscanf(file1, "%d", &num) > 0)
 	{
-        map[i] = num;
-        i++;
-    }
+		map[i] = num;
+		i++;
+	}
 	fclose(file1);
 }
 
