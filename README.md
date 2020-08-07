@@ -23,6 +23,14 @@
 ## Installing
 First you have to install dev-c++ and have the correct files of opengl, you can follow this easy tutorial:
 <a href="https://www.youtube.com/watch?v=RTk6W67dyR4">Dev-C++ and OpenGL install</a>
+* After follow the video, clone this repo or download the zip file in your computer.
+* Now you can open the main file in dev c++ and change in the ReadMapFromFile function the text with the path where is the maps folder:
+`if (mapX == 16 && mapY == 16)
+		file1 = fopen("'put here the path where is your file'\\map1.txt", "r");
+	else
+		file1 = fopen("''put here the path where is your file'\\map2.txt", "r");`
+* And now you can execute it and enjoy the raycaster.
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
