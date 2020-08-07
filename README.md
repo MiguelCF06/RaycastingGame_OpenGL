@@ -7,7 +7,7 @@
 
 
 <p align="center">
-  <img src="https://www.swantiez.org/wolf/wp-content/uploads/2014/08/raycasteruntextured.gif" width="490" height="200">
+  <img src="https://www.swantiez.org/wolf/wp-content/uploads/2014/08/raycasteruntextured.gif" width="400" height="260">
 
   <h3 align="center">Raycasting with OpenGL</h3>
 
