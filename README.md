@@ -20,6 +20,10 @@
   </p>
 </p>
 
+## Installing
+First you have to install dev-c++ and have the correct files of opengl, you can follow this easy tutorial:
+<a href="https://www.youtube.com/watch?v=RTk6W67dyR4">Dev-C++ and OpenGL install</a>
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
