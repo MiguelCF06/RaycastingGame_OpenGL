@@ -7,7 +7,7 @@
 
 
 <p align="center">
-  <img src="https://i.imgur.com/3GmPd7O.png" width="490" height="200">
+  <img src="https://8th-dev.com/forum/index.php?action=dlattach;topic=1738.0;attach=521" width="490" height="200">
 
   <h3 align="center">Raycasting with OpenGL</h3>
 
