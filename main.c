@@ -33,9 +33,9 @@ void readMapFromFile()
 
     while(fscanf(file1, "%d", &num) > 0)
 	{
-        map[i] = num;
-        i++;
-    }
+        	map[i] = num;
+        	i++;
+    	}
 	fclose(file1);
 }
 
