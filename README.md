@@ -12,7 +12,7 @@
   <h3 align="center">Raycasting with OpenGL</h3>
 
   <p align="center">
-        <em>Look for the raycaster written in C with the API OpenGL</em>
+        <em>Ray casting refers to the use of the ray-surface intersection to solve a variety of problems in computer graphics and computational geometry.</em>
     <br /><br />
     <a href="https://github.com/MiguelCF06/RaycastingGame_OpenGL/issues">Report Bug</a>
     ·
